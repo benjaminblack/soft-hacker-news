@@ -7,8 +7,8 @@ import Nav from './components/Nav';
 import { ThemeProvider } from './contexts/theme';
 import './stylesheets/index.css';
 
-const Top = React.lazy(() => import('./components/Top'));
-const Hot = React.lazy(() => import('./components/Hot'));
+const Top = React.lazy(() => import('./components/TopStories'));
+const New = React.lazy(() => import('./components/NewStories'));
 
 class App extends React.Component {
   state = {
@@ -30,7 +30,7 @@ class App extends React.Component {
             <React.Suspense fallback={<Loading />}>
               <Switch>
                 <Route exact path="/" component={Top} />
-                <Route exact path="/new" component={Hot} />
+                <Route exact path="/new" component={New} />
                 <Route render={() => <h1>404</h1>} />
               </Switch>
             </React.Suspense>

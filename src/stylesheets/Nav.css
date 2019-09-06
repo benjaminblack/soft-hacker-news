@@ -1,5 +1,7 @@
 nav > ul {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-gap: 0px 10px;
   list-style-type: none;
   padding-left: 0;
   margin-top: 0;
@@ -7,5 +9,5 @@ nav > ul {
 }
 
 nav > ul > li:last-child {
-  margin-left: auto;
+  justify-self: end;
 }

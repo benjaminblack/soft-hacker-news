@@ -1,5 +1,6 @@
 html {
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 html,
@@ -12,8 +13,19 @@ body {
     sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 .container {
-  max-width: 1200px;
   margin: 0 auto;
+}
+
+main {
+  max-width: 1200px;
   padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
