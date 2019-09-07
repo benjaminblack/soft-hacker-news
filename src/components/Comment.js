@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import '../stylesheets/Comment.css';
 
 const Comment = (props) => {
-  const { el = 'li', by, time, text } = props;
+  const { el = 'li', by, time, text = '(empty)' } = props;
 
   const createItemText = () => ({ __html: text });
 
@@ -14,9 +15,13 @@ const Comment = (props) => {
     <React.Fragment>
       <p className="item-metadata">
         {'by '}
-        <a className="item-by-link" href={`/user/?id=${by}`}>
-          {by}
-        </a>
+        {by ? (
+          <Link className="item-by" to={`/user/?id=${by}`}>
+            {by}
+          </Link>
+        ) : (
+          <span className="item-by">(unknown)</span>
+        )}
         {' on '}
         {moment(time * 1000).format('M/D/Y, h:mm A')}
       </p>
@@ -28,9 +33,9 @@ const Comment = (props) => {
 
 Comment.propTypes = {
   el: PropTypes.string,
-  by: PropTypes.string.isRequired,
+  by: PropTypes.string,
   time: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 };
 
 export default Comment;

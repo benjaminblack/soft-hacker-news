@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import '../stylesheets/Story.css';
 
@@ -17,17 +18,17 @@ const Story = (props) => {
       </h4>
       <p className="story-metadata">
         {'by '}
-        <a className="story-by" href={`/user/?id=${by}`}>
+        <Link className="story-by" to={`/user/?id=${by}`}>
           {by}
-        </a>
+        </Link>
         {' on '}
         {moment(time * 1000).format('M/D/Y, h:mm A')}
         {descendants !== undefined && (
           <React.Fragment>
             {' with '}
-            <a className="story-comments" href={`/post?id=${id}`}>
+            <Link className="story-comments" to={`/post?id=${id}`}>
               {descendants}
-            </a>
+            </Link>
             {' comments'}
           </React.Fragment>
         )}

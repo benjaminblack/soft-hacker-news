@@ -4,12 +4,6 @@ allSettled.shim();
 
 const BATCH_SIZE = 10;
 
-export async function getStoriesIterator(type) {
-  const allStoryIds = await getAllStoryIds(type);
-
-  return itemsIterator(allStoryIds);
-}
-
 export async function* itemsIterator(itemIds, batchSize = BATCH_SIZE) {
   let i = 0;
 
@@ -34,6 +28,6 @@ export async function getItem(id) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)).json();
 }
 
-async function getAllStoryIds(type) {
+export async function getAllStoryIds(type) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/${type}stories.json`)).json();
 }

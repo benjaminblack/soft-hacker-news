@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Story from './Story';
-import { getStoriesIterator } from '../utils/api';
+import { getAllStoryIds } from '../utils/api';
 import '../stylesheets/Stories.css';
+import ItemList from './ItemList';
 
 class Stories extends React.Component {
   static propTypes = {
@@ -10,47 +11,45 @@ class Stories extends React.Component {
   };
 
   state = {
-    isLoadingStories: true,
-    storiesIterator: null,
-    stories: [],
-    allStoriesLoaded: false,
-  };
-
-  loadMoreStories = async () => {
-    await new Promise((resolve) => this.setState({ isLoadingStories: true }, resolve));
-
-    const { storiesIterator } = this.state;
-
-    const { value: moreStories, done: allStoriesLoaded } = await storiesIterator.next();
-
-    this.setState(({ stories }) => ({
-      stories: [...stories, ...moreStories],
-      allStoriesLoaded,
-      isLoadingStories: false,
-    }));
+    loading: true,
+    storyIds: null,
   };
 
   async componentDidMount() {
-    if (!this.state.storiesIterator) {
-      this.setState({ storiesIterator: await getStoriesIterator(this.props.type) }, () => this.loadMoreStories());
-    }
+    const { type } = this.props;
+
+    const storyIds = await getAllStoryIds(type);
+
+    this.setState({ storyIds, loading: false });
   }
 
   render() {
-    const { stories, allStoriesLoaded, isLoadingStories } = this.state;
+    const { loading, storyIds } = this.state;
+
+    if (loading) {
+      return <h1>Loading&hellip;</h1>;
+    }
 
     return (
-      <React.Fragment>
-        <ul className="stories">
-          {stories.map((story) => {
-            const { by, descendants, id, time, title, url } = story;
+      <ItemList ids={storyIds} batchSize={15}>
+        {({ items, loading, allItemsLoaded, loadMore }) => (
+          <React.Fragment>
+            <ul className="stories">
+              {items.map((item) => {
+                const { by, descendants, id, time, title, url } = item;
 
-            return <Story key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />;
-          })}
-        </ul>
+                return <Story key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />;
+              })}
+            </ul>
 
-        {!allStoriesLoaded && !isLoadingStories && <button onClick={this.loadMoreStories}>Load more&hellip;</button>}
-      </React.Fragment>
+            {!allItemsLoaded && (
+              <button className="load-more" onClick={loadMore} disabled={loading}>
+                {loading ? 'Loading...' : 'Load more'}
+              </button>
+            )}
+          </React.Fragment>
+        )}
+      </ItemList>
     );
   }
 }

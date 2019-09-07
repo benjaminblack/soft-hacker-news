@@ -25,8 +25,6 @@ class ItemList extends React.Component {
 
     const { value: moreItems, done: allItemsLoaded } = await iterator.next();
 
-    console.log(moreItems);
-
     this.setState(({ items }) => ({
       items: [...items, ...moreItems],
       allItemsLoaded,

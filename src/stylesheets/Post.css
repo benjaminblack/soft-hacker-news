@@ -24,11 +24,11 @@
   color: gray;
 }
 
-.light .post .item-by-link {
+.light .post .item-by {
   color: black;
 }
 
-.dark .post .item-by-link {
+.dark .post .item-by {
   color: #bebebe;
 }
 

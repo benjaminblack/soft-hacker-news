@@ -56,24 +56,22 @@ class Post extends React.Component {
         <Story el="header" key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />
         {kids ? (
           <ItemList ids={kids}>
-            {({ items, loading, allItemsLoaded, loadMore }) => {
-              return (
-                <React.Fragment>
-                  <ul className="comments">
-                    {items.map((comment) => {
-                      const { id, by, time, text } = comment;
+            {({ items, loading, allItemsLoaded, loadMore }) => (
+              <React.Fragment>
+                <ul className="comments">
+                  {items.map((comment) => {
+                    const { id, by, time, text } = comment;
 
-                      return <Comment el="li" key={id} by={by} time={time} text={text} />;
-                    })}
-                  </ul>
-                  {!allItemsLoaded && (
-                    <button className="load-more" onClick={loadMore} disabled={loading}>
-                      {loading ? 'Loading...' : 'Load more'}
-                    </button>
-                  )}
-                </React.Fragment>
-              );
-            }}
+                    return <Comment el="li" key={id} by={by} time={time} text={text} />;
+                  })}
+                </ul>
+                {!allItemsLoaded && (
+                  <button className="load-more" onClick={loadMore} disabled={loading}>
+                    {loading ? 'Loading...' : 'Load more'}
+                  </button>
+                )}
+              </React.Fragment>
+            )}
           </ItemList>
         ) : (
           <h2>No comments</h2>
