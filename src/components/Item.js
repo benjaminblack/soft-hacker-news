@@ -47,7 +47,7 @@ const Item = (props) => {
           </React.Fragment>
         )}
       </p>
-      {text && <p className="item-text" dangerouslySetInnerHTML={{ __html: text }} />}
+      {text && <div className="item-text" dangerouslySetInnerHTML={{ __html: text }} />}
     </React.Fragment>
   );
 };

@@ -7,6 +7,10 @@ nav a {
   text-decoration: none;
 }
 
+nav a:focus {
+  outline: none;
+}
+
 .light nav a.active,
 .dark nav a.active {
   color: rgb(187, 46, 31);

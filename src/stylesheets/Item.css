@@ -41,6 +41,11 @@
   color: #bebebe;
 }
 
+.item-text {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 .light .item-text {
   color: black;
 }
