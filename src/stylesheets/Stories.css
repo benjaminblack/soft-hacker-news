@@ -1,3 +1,7 @@
 .stories {
   margin-top: 1em;
 }
+
+.stories .item-text {
+  display: none;
+}

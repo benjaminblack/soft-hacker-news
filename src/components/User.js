@@ -24,7 +24,7 @@ const UserProfile = ({ user: { id, created, karma, about } }) => (
         </React.Fragment>
       )}
     </p>
-    {about && <p className="user-about">{about}</p>}
+    {about && <p className="user-about" dangerouslySetInnerHTML={{ __html: about }} />}
   </header>
 );
 
