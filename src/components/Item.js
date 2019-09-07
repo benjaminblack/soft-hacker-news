@@ -1,9 +1,8 @@
-/* eslint no-unused-vars: off */
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Item.css';
+import formatDate from '../utils/formatDate';
 
 const Item = ({ el = 'li', className = 'item', item }) => {
   const { by, descendants, id, time, title, url, text } = item;
@@ -33,7 +32,7 @@ const Item = ({ el = 'li', className = 'item', item }) => {
 
         {' on '}
 
-        {moment(time * 1000).format('M/D/Y, h:mm A')}
+        {formatDate(time)}
 
         {descendants !== undefined && (
           <React.Fragment>

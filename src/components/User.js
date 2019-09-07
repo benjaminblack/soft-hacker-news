@@ -1,10 +1,10 @@
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/User.css';
 import ItemList from './ItemList';
 import ItemQuery from './ItemQuery';
 import Loading from './Loading';
+import formatDate from '../utils/formatDate';
 
 const UserProfile = ({ user: { id, created, karma, about } }) => (
   <header className="user-profile">
@@ -13,7 +13,7 @@ const UserProfile = ({ user: { id, created, karma, about } }) => (
       {created && (
         <React.Fragment>
           {'joined '}
-          <span className="user-joined">{moment(created * 1000).format('M/D/Y, h:mm A')}</span>{' '}
+          <span className="user-joined">{formatDate(created)}</span>{' '}
         </React.Fragment>
       )}
       {karma && (
