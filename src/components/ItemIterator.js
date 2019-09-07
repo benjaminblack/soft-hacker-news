@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { itemsIterator } from '../utils/api';
+import { getItemIterator } from '../utils/api';
 
 const DEFAULT_BATCH_SIZE = 5;
 
@@ -52,7 +52,9 @@ class ItemIterator extends React.Component {
 
   async componentDidMount() {
     const { ids, batchSize = DEFAULT_BATCH_SIZE } = this.props;
-    this.setState({ iterator: await itemsIterator(ids, batchSize) }, () => this.loadMore());
+    this.setState({ iterator: await getItemIterator({ itemIds: ids, batchSize, endpoint: 'item' }) }, () =>
+      this.loadMore()
+    );
   }
 
   render() {

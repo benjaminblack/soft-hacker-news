@@ -4,7 +4,7 @@ allSettled.shim();
 
 const BATCH_SIZE = 10;
 
-export async function* itemsIterator(itemIds, batchSize = BATCH_SIZE) {
+export async function* getItemIterator({ itemIds, batchSize = BATCH_SIZE, endpoint }) {
   let position = 0;
 
   for (;;) {
@@ -12,21 +12,21 @@ export async function* itemsIterator(itemIds, batchSize = BATCH_SIZE) {
     position += batchSize;
 
     if (position < itemIds.length - 1) {
-      yield getItems(batchIds);
+      yield getItems(batchIds, endpoint);
     } else {
-      return getItems(batchIds);
+      return getItems(batchIds, endpoint);
     }
   }
 }
 
-export async function getItems(ids) {
-  const requests = ids.map((id) => getItem(id));
+export async function getItems(ids, endpoint) {
+  const requests = ids.map((id) => getItem(id, endpoint));
   const outcomes = await Promise.allSettled(requests);
   const items = outcomes.filter(({ status }) => status === 'fulfilled').map(({ value }) => value);
   return items;
 }
 
-export async function getItem(id, endpoint = 'item') {
+export async function getItem(id, endpoint) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/${endpoint}/${id}.json`)).json();
 }
 
