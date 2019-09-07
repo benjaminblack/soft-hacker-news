@@ -7,14 +7,16 @@ const BATCH_SIZE = 10;
 export async function* itemsIterator(itemIds, batchSize = BATCH_SIZE) {
   let position = 0;
 
-  while (position < itemIds.length - batchSize) {
+  for (;;) {
     const batchIds = itemIds.slice(position, position + batchSize);
-    yield getItems(batchIds);
     position += batchSize;
-  }
 
-  const batchIds = itemIds.slice(position, position + batchSize);
-  return getItems(batchIds);
+    if (position < itemIds.length - 1) {
+      yield getItems(batchIds);
+    } else {
+      return getItems(batchIds);
+    }
+  }
 }
 
 export async function getItems(ids) {
@@ -24,10 +26,10 @@ export async function getItems(ids) {
   return items;
 }
 
-export async function getItem(id) {
-  return (await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)).json();
+export async function getItem(id, endpoint = 'item') {
+  return (await fetch(`https://hacker-news.firebaseio.com/v0/${endpoint}/${id}.json`)).json();
 }
 
-export async function getAllStoryIds(type) {
+export async function getStories(type) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/${type}stories.json`)).json();
 }

@@ -18,7 +18,7 @@ class Post extends React.Component {
 
   async componentDidMount() {
     try {
-      const params = new URLSearchParams(location.search);
+      const params = new URLSearchParams(this.props.location.search);
       const id = params.get('id');
 
       if (!id) {

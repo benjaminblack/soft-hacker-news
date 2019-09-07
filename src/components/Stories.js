@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Item from './Item';
-import { getAllStoryIds } from '../utils/api';
+import { getStories } from '../utils/api';
 import '../stylesheets/Stories.css';
-import ItemList from './ItemList';
+import StoryList from './StoryList';
 
 class Stories extends React.Component {
   static propTypes = {
@@ -18,7 +17,7 @@ class Stories extends React.Component {
   async componentDidMount() {
     const { type } = this.props;
 
-    const storyIds = await getAllStoryIds(type);
+    const storyIds = await getStories(type);
 
     this.setState({ storyIds, loading: false });
   }
@@ -30,27 +29,7 @@ class Stories extends React.Component {
       return <h1>Loading&hellip;</h1>;
     }
 
-    return (
-      <ItemList ids={storyIds} batchSize={15}>
-        {({ items, loading, allItemsLoaded, loadMore }) => (
-          <React.Fragment>
-            <ul className="stories">
-              {items.map((item) => {
-                const { by, descendants, id, time, title, url } = item;
-
-                return <Item key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />;
-              })}
-            </ul>
-
-            {!allItemsLoaded && (
-              <button className="load-more" onClick={loadMore} disabled={loading}>
-                {loading ? 'Loading...' : 'Load more'}
-              </button>
-            )}
-          </React.Fragment>
-        )}
-      </ItemList>
-    );
+    return <StoryList stories={storyIds} />;
   }
 }
 

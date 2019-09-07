@@ -9,6 +9,11 @@ class ItemList extends React.Component {
     ids: PropTypes.array.isRequired,
     batchSize: PropTypes.number,
     children: PropTypes.func.isRequired,
+    filter: PropTypes.func,
+  };
+
+  static defaultProps = {
+    filter: (item) => item !== null && !item.deleted,
   };
 
   state = {
@@ -19,11 +24,24 @@ class ItemList extends React.Component {
   };
 
   loadMore = async () => {
-    await new Promise((resolve) => this.setState({ loading: true }, resolve));
+    this.setState({ loading: true });
 
     const { iterator } = this.state;
+    const { filter, batchSize } = this.props;
 
-    const { value: moreItems, done: allItemsLoaded } = await iterator.next();
+    let moreItems = [];
+    let allItemsLoaded = false;
+
+    for (;;) {
+      const { value: nextBatch, done } = await iterator.next();
+
+      moreItems = [...moreItems, ...nextBatch.filter(filter)];
+      allItemsLoaded = done;
+
+      if (allItemsLoaded || moreItems.length >= batchSize) {
+        break;
+      }
+    }
 
     this.setState(({ items }) => ({
       items: [...items, ...moreItems],

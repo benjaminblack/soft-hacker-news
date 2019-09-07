@@ -1,0 +1,43 @@
+.user-profile {
+  margin-top: 2em;
+}
+
+.user-id {
+  font-size: 200%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.light .user-id {
+  color: black;
+}
+
+.dark .user-id {
+  color: #dadada;
+}
+
+.user-metadata {
+  margin-top: 0.25em;
+  margin-bottom: 0;
+}
+
+.light .user-metadata {
+  color: gray;
+}
+
+.dark .user-metadata {
+  color: #dadada;
+}
+
+.user-joined,
+.user-karma {
+  font-weight: bold;
+}
+
+.light .user-posts {
+  color: black;
+}
+
+.dark .user-posts {
+  color: #dadada;
+}
