@@ -66,7 +66,7 @@ class User extends React.Component {
             <article className="user">
               <UserProfile user={user} />
               <h2 className="user-posts">Posts</h2>
-              <ItemList items={user.submitted} filter={filter} />
+              <ItemList items={user.submitted} filter={filter} batchSize={5} />
             </article>
           );
         }}
