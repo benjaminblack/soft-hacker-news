@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import '../stylesheets/StoryList.css';
 import Item from './Item';
 import ItemIterator from './ItemIterator';
 
@@ -12,7 +13,7 @@ const StoryList = ({ stories }) => {
     <ItemIterator ids={stories} batchSize={15} filter={filter}>
       {({ items, loading, allItemsLoaded, loadMore }) => (
         <React.Fragment>
-          <ul className="stories">
+          <ul className="story-list">
             {items.map((item) => {
               if (item === null) {
                 return null;

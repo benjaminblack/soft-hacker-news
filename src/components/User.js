@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/User.css';
 import ItemQuery from './ItemQuery';
+import Loading from './Loading';
 import StoryList from './StoryList';
 
 const UserProfile = ({ user: { id, created, karma, about } }) => (
@@ -48,7 +49,7 @@ class User extends React.Component {
       <ItemQuery search={this.props.location.search} endpoint="user">
         {({ loading, item: user, error }) => {
           if (loading) {
-            return <h1>Loading</h1>;
+            return <Loading />;
           }
 
           if (error) {

@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/Stories.css';
 import { getStories } from '../utils/api';
+import Loading from './Loading';
 import StoryList from './StoryList';
 
 class Stories extends React.Component {
   static propTypes = {
-    type: PropTypes.string.isRequired,
+    endpoint: PropTypes.string.isRequired,
   };
 
   state = {
@@ -15,9 +16,9 @@ class Stories extends React.Component {
   };
 
   async componentDidMount() {
-    const { type } = this.props;
+    const { endpoint } = this.props;
 
-    const storyIds = await getStories(type);
+    const storyIds = await getStories(endpoint);
 
     this.setState({ storyIds, loading: false });
   }
@@ -26,10 +27,14 @@ class Stories extends React.Component {
     const { loading, storyIds } = this.state;
 
     if (loading) {
-      return <h1>Loading&hellip;</h1>;
+      return <Loading />;
     }
 
-    return <StoryList stories={storyIds} />;
+    return (
+      <article className="stories">
+        <StoryList stories={storyIds} />
+      </article>
+    );
   }
 }
 
