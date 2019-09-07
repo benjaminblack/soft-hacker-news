@@ -1,16 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-const styles = {
-  content: {
-    fontSize: '35px',
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    marginTop: '20px',
-    textAlign: 'center',
-  },
-};
+import '../stylesheets/Loading.css';
 
 class Loading extends React.Component {
   static propTypes = {
@@ -42,7 +32,7 @@ class Loading extends React.Component {
   }
 
   render() {
-    return <p style={styles.content}>{this.state.content}</p>;
+    return <p className="loading">{this.state.content}</p>;
   }
 }
 
