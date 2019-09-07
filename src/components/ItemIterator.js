@@ -39,8 +39,6 @@ class ItemIterator extends React.Component {
       moreItems = [...moreItems, ...nextBatch.filter(filter)];
       allItemsLoaded = done;
 
-      console.log(moreItems.length);
-
       if (allItemsLoaded || moreItems.length >= batchSize) {
         break;
       }
