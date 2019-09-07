@@ -30,6 +30,6 @@ export async function getItem(id, endpoint) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/${endpoint}/${id}.json`)).json();
 }
 
-export async function getStories(type) {
-  return (await fetch(`https://hacker-news.firebaseio.com/v0/${type}stories.json`)).json();
+export async function getStories(endpoint) {
+  return (await fetch(`https://hacker-news.firebaseio.com/v0/${endpoint}stories.json`)).json();
 }

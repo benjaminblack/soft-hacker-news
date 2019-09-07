@@ -5,8 +5,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../stylesheets/Item.css';
 
-const Item = (props) => {
-  const { el = 'li', by, descendants, id, time, title, url, text, className = 'item' } = props;
+const Item = ({ el = 'li', className = 'item', item }) => {
+  const { by, descendants, id, time, title, url, text } = item;
 
   return React.createElement(
     el,
@@ -54,14 +54,8 @@ const Item = (props) => {
 
 Item.propTypes = {
   el: PropTypes.string,
-  by: PropTypes.string,
-  descendants: PropTypes.number,
-  id: PropTypes.number.isRequired,
-  time: PropTypes.number.isRequired,
-  title: PropTypes.string,
-  url: PropTypes.string,
   className: PropTypes.string,
-  text: PropTypes.string,
+  item: PropTypes.object,
 };
 
 export default Item;

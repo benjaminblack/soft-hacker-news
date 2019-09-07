@@ -13,17 +13,7 @@ const StoryList = ({ stories }) => {
     <ItemIterator ids={stories} batchSize={15} filter={filter}>
       {({ items, loading, allItemsLoaded, loadMore }) => (
         <React.Fragment>
-          <ul className="story-list">
-            {items.map((item) => {
-              if (item === null) {
-                return null;
-              }
-
-              const { by, descendants, id, time, title, url } = item;
-
-              return <Item key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />;
-            })}
-          </ul>
+          <ul className="story-list">{items.map((item) => (item ? <Item key={item.id} item={item} /> : null))}</ul>
 
           {!allItemsLoaded && (
             <button className="load-more" onClick={loadMore} disabled={loading}>

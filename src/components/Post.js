@@ -22,22 +22,10 @@ class Post extends React.Component {
             return <h1>Error</h1>;
           }
 
-          const { by, descendants, id, time, title, url, kids } = post;
-
           return (
             <article className="post">
-              <Item
-                el="header"
-                key={id}
-                by={by}
-                descendants={descendants}
-                id={id}
-                time={time}
-                title={title}
-                url={url}
-              />
-
-              <CommentList comments={kids} />
+              <Item key={post.id} item={post} el="header" />
+              <CommentList comments={post.kids} />
             </article>
           );
         }}
