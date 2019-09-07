@@ -3,7 +3,11 @@ import React from 'react';
 import '../stylesheets/Stories.css';
 import { getStories } from '../utils/api';
 import Loading from './Loading';
-import StoryList from './StoryList';
+import ItemList from './ItemList';
+
+const filter = (item) => {
+  return item !== null && !item.deleted && item.type === 'story';
+};
 
 class Stories extends React.Component {
   static propTypes = {
@@ -32,7 +36,7 @@ class Stories extends React.Component {
 
     return (
       <article className="stories">
-        <StoryList stories={storyIds} />
+        <ItemList items={storyIds} batchSize={15} filter={filter} />
       </article>
     );
   }
