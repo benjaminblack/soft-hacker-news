@@ -39,4 +39,9 @@ nav button {
   border: none;
   background: transparent;
   font-size: 2rem;
+  cursor: pointer;
+}
+
+nav button:focus {
+  outline: none;
 }

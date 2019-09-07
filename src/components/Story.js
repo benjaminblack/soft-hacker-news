@@ -16,19 +16,26 @@ const Story = (props) => {
           {title}
         </a>
       </h4>
+
       <p className="story-metadata">
         {'by '}
+
         <Link className="story-by" to={`/user/?id=${by}`}>
           {by}
         </Link>
+
         {' on '}
+
         {moment(time * 1000).format('M/D/Y, h:mm A')}
+
         {descendants !== undefined && (
           <React.Fragment>
             {' with '}
+
             <Link className="story-comments" to={`/post?id=${id}`}>
               {descendants}
             </Link>
+
             {' comments'}
           </React.Fragment>
         )}

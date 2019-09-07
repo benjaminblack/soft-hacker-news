@@ -5,37 +5,16 @@
   grid-gap: 0.5em 0;
 }
 
+.comments .item {
+  background-color: rgba(128, 128, 128, 0.1411764705882353);
+  border-radius: 3px;
+  padding: 0.5em;
+}
+
 .post header {
   margin-top: 2em;
 }
 
-.post header .story-title {
+.post header .item-title {
   font-size: 200%;
-}
-
-.post .item-metadata {
-  margin-top: 0.25em;
-  margin-bottom: 0;
-  font-weight: 300;
-}
-
-.light .post .item-metadata,
-.dark .post .item-metadata {
-  color: gray;
-}
-
-.light .post .item-by {
-  color: black;
-}
-
-.dark .post .item-by {
-  color: #bebebe;
-}
-
-.light .post .item-text {
-  color: black;
-}
-
-.dark .post .item-text {
-  color: #dadada;
 }

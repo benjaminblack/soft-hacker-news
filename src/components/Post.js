@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ItemList from './ItemList';
-import Comment from './Comment';
-import Story from './Story';
+import Item from './Item';
 import { getItem } from '../utils/api';
 import '../stylesheets/Post.css';
 
@@ -53,7 +52,7 @@ class Post extends React.Component {
 
     return (
       <article className="post">
-        <Story el="header" key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />
+        <Item el="header" key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />
         {kids ? (
           <ItemList ids={kids}>
             {({ items, loading, allItemsLoaded, loadMore }) => (
@@ -62,7 +61,7 @@ class Post extends React.Component {
                   {items.map((comment) => {
                     const { id, by, time, text } = comment;
 
-                    return <Comment el="li" key={id} by={by} time={time} text={text} />;
+                    return <Item el="li" key={id} id={id} by={by} time={time} text={text} />;
                   })}
                 </ul>
                 {!allItemsLoaded && (

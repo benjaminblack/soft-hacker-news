@@ -1,0 +1,50 @@
+.item-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.light .item-title {
+  color: rgb(187, 46, 31);
+}
+
+.dark .item-title {
+  color: rgb(203, 203, 203);
+}
+
+.item-title > a {
+  text-decoration: none;
+}
+
+.item-metadata {
+  margin-top: 0.25em;
+  margin-bottom: 0;
+}
+
+.light .item-metadata,
+.dark .item-metadata {
+  color: gray;
+}
+
+.light .item-metadata a {
+  color: black;
+}
+
+.dark .item-metadata a {
+  color: #bebebe;
+}
+
+.light .item-by {
+  color: black;
+}
+
+.dark .item-by {
+  color: #bebebe;
+}
+
+.light .item-text {
+  color: black;
+}
+
+.dark .item-text {
+  color: #dadada;
+}
