@@ -5,15 +5,15 @@ allSettled.shim();
 const BATCH_SIZE = 10;
 
 export async function* itemsIterator(itemIds, batchSize = BATCH_SIZE) {
-  let i = 0;
+  let position = 0;
 
-  while (i < itemIds.length - batchSize) {
-    const batchIds = itemIds.slice(i, i + batchSize);
+  while (position < itemIds.length - batchSize) {
+    const batchIds = itemIds.slice(position, position + batchSize);
     yield getItems(batchIds);
-    i += batchSize;
+    position += batchSize;
   }
 
-  const batchIds = itemIds.slice(i, i + batchSize);
+  const batchIds = itemIds.slice(position, position + batchSize);
   return getItems(batchIds);
 }
 
