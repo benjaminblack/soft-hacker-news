@@ -10,9 +10,21 @@
 }
 
 .light {
-  background-color: white;
+  --high-contrast: black;
+  --low-contrast: gray;
+  --prominent: rgb(187, 46, 31);
+  --backdrop: rgba(128, 128, 128, 0.1411764705882353);
+  --background: white;
 }
 
 .dark {
-  background-color: #1c2022;
+  --high-contrast: #dadada;
+  --low-contrast: gray;
+  --prominent: rgb(187, 46, 31);
+  --backdrop: rgba(128, 128, 128, 0.1411764705882353);
+  --background: #1c2022;
+}
+
+main {
+  background: var(--background);
 }

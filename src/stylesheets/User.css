@@ -9,24 +9,13 @@
 }
 
 .light .user-id {
-  color: black;
-}
-
-.dark .user-id {
-  color: #dadada;
+  color: var(--high-contrast);
 }
 
 .user-metadata {
   margin-top: 0.25em;
   margin-bottom: 0;
-}
-
-.light .user-metadata {
-  color: gray;
-}
-
-.dark .user-metadata {
-  color: #dadada;
+  color: var(--low-contrast);
 }
 
 .user-joined,
@@ -34,10 +23,6 @@
   font-weight: bold;
 }
 
-.light .user-posts {
-  color: black;
-}
-
-.dark .user-posts {
-  color: #dadada;
+.user-posts {
+  color: var(--high-contrast);
 }

@@ -1,12 +1,12 @@
-.comments {
+.post .item-list {
   padding-left: 0;
   list-style-type: none;
   display: grid;
   grid-gap: 0.5em 0;
 }
 
-.comments .item {
-  background-color: rgba(128, 128, 128, 0.1411764705882353);
+.post .item-list .item {
+  background-color: var(--backdrop);
   border-radius: 3px;
   padding: 0.5em;
 }
@@ -17,4 +17,8 @@
 
 .post header .item-title {
   font-size: 200%;
+}
+
+.dark .post header .item-title {
+  color: var(--high-contrast);
 }

@@ -11,17 +11,12 @@ nav a:focus {
   outline: none;
 }
 
-.light nav a.active,
-.dark nav a.active {
-  color: rgb(187, 46, 31);
+nav a.active {
+  color: var(--prominent);
 }
 
-.light nav a:not(.active) {
-  color: black;
-}
-
-.dark nav a:not(.active) {
-  color: rgb(203, 203, 203);
+nav a:not(.active) {
+  color: var(--high-contrast);
 }
 
 nav > ul {

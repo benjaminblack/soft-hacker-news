@@ -22,27 +22,3 @@ main {
 a {
   color: inherit;
 }
-
-.load-more {
-  background: transparent linear-gradient(to bottom, transparent 0%, rgba(128, 128, 128, 0.1411764705882353) 100%);
-  padding: 0.5em 1em;
-  border-radius: 3px;
-  border: 1px solid gray;
-  box-shadow: none;
-  color: rgb(187, 46, 31);
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.load-more:focus {
-  outline: none;
-}
-
-.load-more:disabled {
-  opacity: 0.5;
-  cursor: default;
-}
-
-.load-more:not(:disabled):hover {
-  background: transparent linear-gradient(to top, transparent 0%, rgba(128, 128, 128, 0.1411764705882353) 100%);
-}
