@@ -45,7 +45,7 @@ class User extends React.Component {
 
   render() {
     return (
-      <ItemQuery search={this.props.location.search}>
+      <ItemQuery search={this.props.location.search} endpoint="user">
         {({ loading, item: user, error }) => {
           if (loading) {
             return <h1>Loading</h1>;
