@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { getItemIterator } from '../utils/api';
 
-const DEFAULT_BATCH_SIZE = 5;
+const DEFAULT_BATCH_SIZE = 10;
 
 class ItemIterator extends React.Component {
   static propTypes = {
@@ -14,6 +14,7 @@ class ItemIterator extends React.Component {
 
   static defaultProps = {
     filter: (item) => item !== null && !item.deleted,
+    batchSize: DEFAULT_BATCH_SIZE,
   };
 
   state = {
@@ -37,6 +38,8 @@ class ItemIterator extends React.Component {
 
       moreItems = [...moreItems, ...nextBatch.filter(filter)];
       allItemsLoaded = done;
+
+      console.log(moreItems.length);
 
       if (allItemsLoaded || moreItems.length >= batchSize) {
         break;

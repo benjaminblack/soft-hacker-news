@@ -2,9 +2,9 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/User.css';
+import ItemList from './ItemList';
 import ItemQuery from './ItemQuery';
 import Loading from './Loading';
-import StoryList from './StoryList';
 
 const UserProfile = ({ user: { id, created, karma, about } }) => (
   <header className="user-profile">
@@ -39,6 +39,12 @@ UserProfile.propTypes = {
   }),
 };
 
+const filter = (item) => {
+  return item !== null && !item.deleted && item.type === 'story';
+};
+
+filter.test = 'yes';
+
 class User extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
@@ -60,7 +66,7 @@ class User extends React.Component {
             <article className="user">
               <UserProfile user={user} />
               <h2 className="user-posts">Posts</h2>
-              <StoryList stories={user.submitted} />
+              <ItemList items={user.submitted} filter={filter} />
             </article>
           );
         }}
