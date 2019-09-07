@@ -32,7 +32,7 @@ class Stories extends React.Component {
 
   async componentDidMount() {
     if (!this.state.storiesIterator) {
-      this.setState({ storiesIterator: getStoriesIterator(this.props.type) }, () => this.loadMoreStories());
+      this.setState({ storiesIterator: await getStoriesIterator(this.props.type) }, () => this.loadMoreStories());
     }
   }
 
@@ -49,7 +49,7 @@ class Stories extends React.Component {
           })}
         </ul>
 
-        {!allStoriesLoaded && !isLoadingStories && <button onClick={this.loadMoreStories}>Load more...</button>}
+        {!allStoriesLoaded && !isLoadingStories && <button onClick={this.loadMoreStories}>Load more&hellip;</button>}
       </React.Fragment>
     );
   }

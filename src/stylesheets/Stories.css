@@ -1,0 +1,6 @@
+.stories {
+  padding-left: 0px;
+  list-style-type: none;
+  display: grid;
+  grid-row-gap: 1em;
+}

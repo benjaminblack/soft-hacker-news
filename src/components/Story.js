@@ -4,11 +4,11 @@ import moment from 'moment';
 import '../stylesheets/Story.css';
 
 const Story = (props) => {
-  const { el = 'li', by, descendants, id, time, title, url } = props;
+  const { el = 'li', by, descendants, id, time, title, url, className = 'story' } = props;
 
   return React.createElement(
     el,
-    { className: 'story' },
+    { className },
     <React.Fragment>
       <h4 className="story-title">
         <a className="story-link" href={url}>
@@ -44,6 +44,7 @@ Story.propTypes = {
   time: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Story;

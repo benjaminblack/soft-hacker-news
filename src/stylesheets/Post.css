@@ -1,0 +1,41 @@
+.comments {
+  padding-left: 0;
+  list-style-type: none;
+  display: grid;
+  grid-gap: 0.5em 0;
+}
+
+.post header {
+  margin-top: 2em;
+}
+
+.post header .story-title {
+  font-size: 200%;
+}
+
+.post .item-metadata {
+  margin-top: 0.25em;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+.light .post .item-metadata,
+.dark .post .item-metadata {
+  color: gray;
+}
+
+.light .post .item-by-link {
+  color: black;
+}
+
+.dark .post .item-by-link {
+  color: #bebebe;
+}
+
+.light .post .item-text {
+  color: black;
+}
+
+.dark .post .item-text {
+  color: #dadada;
+}

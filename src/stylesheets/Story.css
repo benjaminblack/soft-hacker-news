@@ -1,0 +1,35 @@
+.story-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.light .story-title {
+  color: rgb(187, 46, 31);
+}
+
+.dark .story-title {
+  color: rgb(203, 203, 203);
+}
+
+.story-title > a {
+  text-decoration: none;
+}
+
+.story-metadata {
+  margin-top: 0.25em;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+.light .story-metadata,
+.dark .story-metadata {
+  color: gray;
+}
+
+.light .story-metadata a {
+  color: black;
+}
+
+.dark .story-metadata a {
+  color: #bebebe;
+}
