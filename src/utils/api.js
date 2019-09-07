@@ -26,10 +26,12 @@ export async function getItems(ids, endpoint) {
   return items;
 }
 
+// endpoint: item, user
 export async function getItem(id, endpoint) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/${endpoint}/${id}.json`)).json();
 }
 
+// endpoint: top(stories.json), new(stories.json)
 export async function getStories(endpoint) {
   return (await fetch(`https://hacker-news.firebaseio.com/v0/${endpoint}stories.json`)).json();
 }
