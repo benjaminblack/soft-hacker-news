@@ -4,7 +4,7 @@ import { itemsIterator } from '../utils/api';
 
 const DEFAULT_BATCH_SIZE = 5;
 
-class ItemList extends React.Component {
+class ItemIterator extends React.Component {
   static propTypes = {
     ids: PropTypes.array.isRequired,
     batchSize: PropTypes.number,
@@ -62,4 +62,4 @@ class ItemList extends React.Component {
   }
 }
 
-export default ItemList;
+export default ItemIterator;

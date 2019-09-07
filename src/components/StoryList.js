@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
-import ItemList from './ItemList';
+import ItemIterator from './ItemIterator';
 
 const filter = (item) => {
   return item !== null && !item.deleted && item.type === 'story';
@@ -9,7 +9,7 @@ const filter = (item) => {
 
 const StoryList = ({ stories }) => {
   return (
-    <ItemList ids={stories} batchSize={15} filter={filter}>
+    <ItemIterator ids={stories} batchSize={15} filter={filter}>
       {({ items, loading, allItemsLoaded, loadMore }) => (
         <React.Fragment>
           <ul className="stories">
@@ -31,7 +31,7 @@ const StoryList = ({ stories }) => {
           )}
         </React.Fragment>
       )}
-    </ItemList>
+    </ItemIterator>
   );
 };
 

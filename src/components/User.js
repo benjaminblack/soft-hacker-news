@@ -1,10 +1,9 @@
-/* eslint no-unused-vars: off */
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/User.css';
-import { getItem } from '../utils/api';
 import StoryList from './StoryList';
+import ItemQuery from './ItemQuery';
 
 const UserProfile = ({ user: { id, created, karma, about } }) => (
   <header className="user-profile">
@@ -23,8 +22,8 @@ const UserProfile = ({ user: { id, created, karma, about } }) => (
           {' karma'}
         </React.Fragment>
       )}
-      {about && <p className="user-about">{about}</p>}
     </p>
+    {about && <p className="user-about">{about}</p>}
   </header>
 );
 
@@ -39,43 +38,6 @@ UserProfile.propTypes = {
   }),
 };
 
-class QueryUser extends React.Component {
-  static propTypes = {
-    location: PropTypes.object.isRequired,
-    children: PropTypes.func.isRequired,
-  };
-
-  state = {
-    loading: true,
-    item: null,
-    error: false,
-  };
-
-  async componentDidMount() {
-    try {
-      const itemId = new URLSearchParams(this.props.location.search).get('id');
-
-      if (!itemId) {
-        throw new Error('id not specified');
-      }
-
-      const item = await getItem(itemId, 'user');
-
-      if (!item) {
-        throw new Error('item not found');
-      }
-
-      this.setState({ item, loading: false });
-    } catch (e) {
-      this.setState({ error: true, loading: false });
-    }
-  }
-
-  render() {
-    return this.props.children(this.state);
-  }
-}
-
 class User extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
@@ -83,7 +45,7 @@ class User extends React.Component {
 
   render() {
     return (
-      <QueryUser location={this.props.location}>
+      <ItemQuery search={this.props.location.search}>
         {({ loading, item: user, error }) => {
           if (loading) {
             return <h1>Loading</h1>;
@@ -94,14 +56,14 @@ class User extends React.Component {
           }
 
           return (
-            <React.Fragment>
+            <article className="user">
               <UserProfile user={user} />
               <h2 className="user-posts">Posts</h2>
               <StoryList stories={user.submitted} />
-            </React.Fragment>
+            </article>
           );
         }}
-      </QueryUser>
+      </ItemQuery>
     );
   }
 }
