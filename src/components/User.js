@@ -2,8 +2,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/User.css';
-import StoryList from './StoryList';
 import ItemQuery from './ItemQuery';
+import StoryList from './StoryList';
 
 const UserProfile = ({ user: { id, created, karma, about } }) => (
   <header className="user-profile">

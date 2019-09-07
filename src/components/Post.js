@@ -1,9 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import '../stylesheets/Post.css';
+import Item from './Item';
 import ItemIterator from './ItemIterator';
 import ItemQuery from './ItemQuery';
-import Item from './Item';
-import '../stylesheets/Post.css';
 
 const CommentList = ({ comments }) => (
   <ul className="comments">

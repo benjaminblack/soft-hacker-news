@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { getStories } from '../utils/api';
+import React from 'react';
 import '../stylesheets/Stories.css';
+import { getStories } from '../utils/api';
 import StoryList from './StoryList';
 
 class Stories extends React.Component {
