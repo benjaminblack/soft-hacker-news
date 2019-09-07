@@ -2,9 +2,9 @@ import allSettled from 'promise.allsettled';
 
 allSettled.shim();
 
-const BATCH_SIZE = 10;
+const DEFAULT_BATCH_SIZE = 10;
 
-export async function* getItemIterator({ itemIds, batchSize = BATCH_SIZE, endpoint }) {
+export async function* getItemIterator({ itemIds, batchSize = DEFAULT_BATCH_SIZE, endpoint }) {
   let position = 0;
 
   for (;;) {
