@@ -51,31 +51,33 @@ class Post extends React.Component {
 
     const { by, descendants, id, time, title, url, kids } = post;
 
-    console.log(kids);
-
     return (
       <article className="post">
         <Story el="header" key={id} by={by} descendants={descendants} id={id} time={time} title={title} url={url} />
-        <ItemList ids={kids}>
-          {({ items, loading, allItemsLoaded, loadMore }) => {
-            return (
-              <React.Fragment>
-                <ul className="comments">
-                  {items.map((comment) => {
-                    const { id, by, time, text } = comment;
+        {kids ? (
+          <ItemList ids={kids}>
+            {({ items, loading, allItemsLoaded, loadMore }) => {
+              return (
+                <React.Fragment>
+                  <ul className="comments">
+                    {items.map((comment) => {
+                      const { id, by, time, text } = comment;
 
-                    return <Comment el="li" key={id} by={by} time={time} text={text} />;
-                  })}
-                </ul>
-                {!allItemsLoaded && (
-                  <button className="load-more" onClick={loadMore} disabled={loading}>
-                    {loading ? 'Loading...' : 'Load more'}
-                  </button>
-                )}
-              </React.Fragment>
-            );
-          }}
-        </ItemList>
+                      return <Comment el="li" key={id} by={by} time={time} text={text} />;
+                    })}
+                  </ul>
+                  {!allItemsLoaded && (
+                    <button className="load-more" onClick={loadMore} disabled={loading}>
+                      {loading ? 'Loading...' : 'Load more'}
+                    </button>
+                  )}
+                </React.Fragment>
+              );
+            }}
+          </ItemList>
+        ) : (
+          <h2>No comments</h2>
+        )}
       </article>
     );
   }
