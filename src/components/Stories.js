@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Story from './Story';
 import { getStoriesIterator } from '../utils/api';
 import '../stylesheets/Stories.css';
 
 class Stories extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(`newstories`);
-  }
+  static propTypes = {
+    type: PropTypes.string.isRequired,
+  };
+
   state = {
     isLoadingStories: true,
     storiesIterator: null,
@@ -31,7 +32,7 @@ class Stories extends React.Component {
 
   async componentDidMount() {
     if (!this.state.storiesIterator) {
-      this.setState({ storiesIterator: getStoriesIterator('new') }, () => this.loadMoreStories());
+      this.setState({ storiesIterator: getStoriesIterator(this.props.type) }, () => this.loadMoreStories());
     }
   }
 
