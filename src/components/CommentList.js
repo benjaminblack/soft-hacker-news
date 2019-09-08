@@ -30,8 +30,6 @@ class CommentList extends React.Component {
   render() {
     const { comments } = this.props;
 
-    this.nester.test = 'test';
-
     return <ItemList items={comments} nester={this.nester} />;
   }
 }
