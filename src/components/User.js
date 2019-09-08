@@ -43,8 +43,6 @@ const filter = (item) => {
   return item !== null && !item.deleted && item.type === 'story';
 };
 
-filter.test = 'yes';
-
 class User extends React.Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
