@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { getItemIterator } from '../utils/api';
-
-const DEFAULT_BATCH_SIZE = 10;
+import { getItemIterator, DEFAULT_BATCH_SIZE } from '../utils/api';
 
 class ItemIterator extends React.Component {
   static propTypes = {

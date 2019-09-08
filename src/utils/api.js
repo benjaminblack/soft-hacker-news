@@ -4,6 +4,8 @@ allSettled.shim();
 
 const DEFAULT_BATCH_SIZE = 10;
 
+export { DEFAULT_BATCH_SIZE };
+
 export async function* getItemIterator({ itemIds, batchSize = DEFAULT_BATCH_SIZE, endpoint }) {
   let position = 0;
 
