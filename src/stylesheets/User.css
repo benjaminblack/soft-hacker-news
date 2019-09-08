@@ -6,9 +6,6 @@
   font-size: 200%;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.light .user-id {
   color: var(--high-contrast);
 }
 
