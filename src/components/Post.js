@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/Post.css';
+import CommentList from './CommentList';
 import Item from './Item';
-import ItemList from './ItemList';
 import ItemQuery from './ItemQuery';
 
 class Post extends React.Component {
@@ -25,7 +25,7 @@ class Post extends React.Component {
           return (
             <article className="post">
               <Item key={post.id} item={post} el="header" />
-              <ItemList items={post.kids} />
+              <CommentList comments={post.kids} />
             </article>
           );
         }}

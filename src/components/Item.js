@@ -46,6 +46,7 @@ const Item = ({ el = 'li', className = 'item', item }) => {
           </React.Fragment>
         )}
       </p>
+
       {text && <div className="item-text" dangerouslySetInnerHTML={{ __html: text }} />}
     </React.Fragment>
   );

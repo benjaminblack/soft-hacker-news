@@ -15,14 +15,17 @@ LoadMoreButton.propTypes = {
   loadMore: PropTypes.func.isRequired,
 };
 
-const ItemList = ({ items, batchSize, filter }) => {
+const ItemList = ({ items, batchSize, filter, nester }) => {
   return (
     <ItemIterator ids={items} batchSize={batchSize} filter={filter}>
       {({ items, loading, allItemsLoaded, loadMore }) => (
         <React.Fragment>
           <ul className="item-list">
             {items.map((item) => (
-              <Item key={item.id} item={item} />
+              <React.Fragment key={item.id}>
+                <Item item={item} />
+                {item.kids && nester(item.kids)}
+              </React.Fragment>
             ))}
           </ul>
 
@@ -37,6 +40,11 @@ ItemList.propTypes = {
   items: PropTypes.array.isRequired,
   batchSize: PropTypes.number,
   filter: PropTypes.func,
+  nester: PropTypes.func,
+};
+
+ItemList.defaultProps = {
+  nester: () => null,
 };
 
 export default ItemList;

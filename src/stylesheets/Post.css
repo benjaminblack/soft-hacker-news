@@ -5,6 +5,10 @@
   grid-gap: 0.5em 0;
 }
 
+.post .item-list .item-list {
+  padding-left: 2em;
+}
+
 .post .item-list .item {
   background-color: var(--backdrop);
   border-radius: 3px;

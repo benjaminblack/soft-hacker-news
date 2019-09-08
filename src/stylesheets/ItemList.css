@@ -35,6 +35,12 @@
   color: var(--high-contrast);
 }
 
+.show-replies {
+  justify-self: start;
+  margin-left: 2em;
+}
+
+.show-replies,
 .load-more {
   background: transparent linear-gradient(to bottom, transparent 0%, var(--backdrop) 100%);
   padding: 0.5em 1em;
@@ -46,15 +52,18 @@
   cursor: pointer;
 }
 
+.show-replies:focus,
 .load-more:focus {
   outline: none;
 }
 
+.show-replies:disabled,
 .load-more:disabled {
   opacity: 0.5;
   cursor: default;
 }
 
+.show-replies:not(:disabled):hover,
 .load-more:not(:disabled):hover {
   background: transparent linear-gradient(to top, transparent 0%, var(--backdrop) 100%);
 }
