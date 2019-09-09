@@ -2,7 +2,7 @@
   padding-left: 0px;
   list-style-type: none;
   display: grid;
-  grid-row-gap: 1em;
+  grid-gap: 1em 0;
 }
 
 .item-list .item-title {
@@ -35,8 +35,13 @@
   color: var(--high-contrast);
 }
 
-.show-replies {
+.post .show-replies,
+.post .load-more {
   justify-self: start;
+}
+
+.post .show-replies,
+.post .item-list .load-more {
   margin-left: 2em;
 }
 

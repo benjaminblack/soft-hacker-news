@@ -1,41 +1,59 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import '../stylesheets/Post.css';
-import ItemList from './ItemList';
+import ItemIterator from './ItemIterator';
+import Item from './Item';
+import LoadMoreButton from './LoadMoreButton';
 
-const ShowRepliesButton = ({ showReplies }) => (
-  <button className="show-replies" onClick={showReplies}>
-    Show Replies
-  </button>
-);
+class NestedComments extends React.Component {
+  state = {
+    showNested: false,
+  };
 
-ShowRepliesButton.propTypes = {
-  showReplies: PropTypes.func.isRequired,
-};
+  static propTypes = {
+    comments: PropTypes.array.isRequired,
+  };
+
+  render() {
+    if (!this.state.showNested) {
+      return (
+        <button className="show-replies" onClick={() => this.setState({ showNested: true })}>
+          Show Replies&hellip;
+        </button>
+      );
+    } else {
+      return <CommentList comments={this.props.comments} />;
+    }
+  }
+}
 
 class CommentList extends React.Component {
   static propTypes = {
     comments: PropTypes.array,
   };
 
-  state = {
-    showReplies: false,
-  };
-
-  showReplies = () => this.setState({ showReplies: true });
-
-  nester = (comments) =>
-    this.state.showReplies ? <CommentList comments={comments} /> : <ShowRepliesButton showReplies={this.showReplies} />;
-
   render() {
     const { comments } = this.props;
 
-    return <ItemList items={comments} nester={this.nester} />;
+    return (
+      <ItemIterator ids={comments}>
+        {({ items, loading, allItemsLoaded, loadMore }) => (
+          <React.Fragment>
+            <ul className="item-list">
+              {items.map((item) => (
+                <React.Fragment key={item.id}>
+                  <Item item={item} />
+                  {item.kids && <NestedComments comments={item.kids} />}
+                </React.Fragment>
+              ))}
+            </ul>
+
+            {!allItemsLoaded && <LoadMoreButton loadMore={loadMore} loading={loading} />}
+          </React.Fragment>
+        )}
+      </ItemIterator>
+    );
   }
 }
-
-CommentList.propTypes = {
-  comments: PropTypes.array,
-};
 
 export default CommentList;
