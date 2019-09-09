@@ -5,6 +5,10 @@
   grid-gap: 1em 0;
 }
 
+.item-list .item-list {
+  border-left: 1px dotted rgba(0, 0, 0, 0.2);
+}
+
 .item-list .item-title {
   margin-top: 0;
   margin-bottom: 0;
