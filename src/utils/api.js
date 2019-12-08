@@ -1,7 +1,3 @@
-import allSettled from 'promise.allsettled';
-
-allSettled.shim();
-
 const DEFAULT_BATCH_SIZE = 10;
 
 export { DEFAULT_BATCH_SIZE };
