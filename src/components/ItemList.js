@@ -16,7 +16,9 @@ const ItemList = ({ items, batchSize, filter }) => {
             ))}
           </ul>
 
-          {!allItemsLoaded && <LoadMoreButton loadMore={loadMore} loading={loading} />}
+          {!allItemsLoaded && (
+            <LoadMoreButton loadMore={loadMore} loading={loading} />
+          )}
         </React.Fragment>
       )}
     </ItemIterator>

@@ -51,8 +51,15 @@ class ItemIterator extends React.Component {
 
   async componentDidMount() {
     const { ids, batchSize = DEFAULT_BATCH_SIZE } = this.props;
-    this.setState({ iterator: await getItemIterator({ itemIds: ids, batchSize, endpoint: 'item' }) }, () =>
-      this.loadMore()
+    this.setState(
+      {
+        iterator: await getItemIterator({
+          itemIds: ids,
+          batchSize,
+          endpoint: 'item',
+        }),
+      },
+      () => this.loadMore()
     );
   }
 

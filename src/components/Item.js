@@ -47,7 +47,9 @@ const Item = ({ el = 'li', className = 'item', item }) => {
         )}
       </p>
 
-      {text && <div className="item-text" dangerouslySetInnerHTML={{ __html: text }} />}
+      {text && (
+        <div className="item-text" dangerouslySetInnerHTML={{ __html: text }} />
+      )}
     </React.Fragment>
   );
 };

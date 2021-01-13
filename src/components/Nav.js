@@ -20,7 +20,9 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <button onClick={toggleTheme}>{theme === 'light' ? '🔦' : '💡'}</button>
+              <button onClick={toggleTheme}>
+                {theme === 'light' ? '🔦' : '💡'}
+              </button>
             </li>
           </ul>
         </nav>

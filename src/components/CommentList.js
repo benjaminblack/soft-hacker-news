@@ -17,7 +17,10 @@ class NestedComments extends React.Component {
   render() {
     if (!this.state.showNested) {
       return (
-        <button className="show-replies" onClick={() => this.setState({ showNested: true })}>
+        <button
+          className="show-replies"
+          onClick={() => this.setState({ showNested: true })}
+        >
           Show Replies&hellip;
         </button>
       );
@@ -48,7 +51,9 @@ class CommentList extends React.Component {
               ))}
             </ul>
 
-            {!allItemsLoaded && <LoadMoreButton loadMore={loadMore} loading={loading} />}
+            {!allItemsLoaded && (
+              <LoadMoreButton loadMore={loadMore} loading={loading} />
+            )}
           </React.Fragment>
         )}
       </ItemIterator>

@@ -17,7 +17,10 @@ class App extends React.Component {
 
     const themeContext = {
       theme,
-      toggleTheme: () => this.setState(({ theme }) => ({ theme: theme === 'light' ? 'dark' : 'light' })),
+      toggleTheme: () =>
+        this.setState(({ theme }) => ({
+          theme: theme === 'light' ? 'dark' : 'light',
+        })),
     };
 
     return (
@@ -27,8 +30,19 @@ class App extends React.Component {
             <div className="container">
               <Nav />
               <Switch>
-                <Route exact path="/" render={(props) => <Stories key="top" {...props} endpoint="top" />} />
-                <Route path="/new" render={(props) => <Stories key="new" {...props} endpoint="new" />} />
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => (
+                    <Stories key="top" {...props} endpoint="top" />
+                  )}
+                />
+                <Route
+                  path="/new"
+                  render={(props) => (
+                    <Stories key="new" {...props} endpoint="new" />
+                  )}
+                />
                 <Route path="/post" component={Post} />
                 <Route path="/user" component={User} />
                 <Route render={() => <h1>404</h1>} />
