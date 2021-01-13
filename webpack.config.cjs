@@ -1,14 +1,14 @@
-/* eslint-env node */
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
-module.exports = {
+const config = {
+  mode: process.env.NODE_ENV ?? 'development',
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
     publicPath: '/',
   },
   module: {
@@ -19,13 +19,26 @@ module.exports = {
   },
   plugins: [
     new ESLintPlugin(),
-    new HtmlWebpackPlugin({
+    new HTMLWebpackPlugin({
       template: 'src/index.html',
     }),
     new CopyPlugin({ patterns: [path.resolve(__dirname, '_redirects')] }),
   ],
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer: {
     historyApiFallback: true,
   },
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
 };
+
+module.exports = config;
